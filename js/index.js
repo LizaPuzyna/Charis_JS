@@ -23,17 +23,13 @@ var response = undefined;
     xmlhttp.send(null);
     if (xmlhttp.status == 200) {
         response = xmlhttp.responseText;
-        alert(response);
     }
 })();
 var splitted = response.split("\n", 1000);
-console.log(splitted);
-
 for(var i = 0; i < splitted.length; i++){
     var spl = splitted[i].split("=", 1000);
     if (spl[0]=="TaskPicture"){
         s = spl[1];
-        console.log(s);
     }
 }
 
