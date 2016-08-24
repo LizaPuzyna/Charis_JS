@@ -29,7 +29,10 @@ var splitted = response.split("\n", 1000);
 for(var i = 0; i < splitted.length; i++){
     var spl = splitted[i].split("=", 1000);
     if (spl[0]=="TaskPicture"){
-        s = spl[1];
+        if (spl.length == 2){
+            s = spl[1];
+            console.log(s)
+        }
     }
 }
 
