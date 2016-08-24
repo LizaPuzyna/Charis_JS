@@ -58,8 +58,7 @@ var str = '';
     var context3 = canvas2.getContext("2d");
     var context4 = canvas2.getContext("2d");
 
-<<<<<<< HEAD
-=======
+
 function drawBoard(context) {
     for (var i = 0; i <= bw; i += 50) {
         context.moveTo(0.5 + i + padding, padding);
@@ -79,8 +78,9 @@ function par(s) {
             for (j = 0; j < s[i + 1]; j++) {
                 move(s[i]);
             }
->>>>>>> c4701f337add648ca9b42a2cf6392c628240a12b
-
+        }
+    }
+}
 
     function drawBoard(context) {
         for (var i = 0; i <= bw; i += 50) {
