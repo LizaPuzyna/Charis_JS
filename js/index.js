@@ -1,44 +1,5 @@
 var str = '';
 
-    function getXmlHttp() {
-        var xmlhttp;
-        try {
-            xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (E) {
-                xmlhttp = false;
-            }
-        }
-        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
-            xmlhttp = new XMLHttpRequest();
-        }
-        return xmlhttp;
-    }
-    var response = undefined;
-    (function () {
-        var xmlhttp = getXmlHttp();
-        xmlhttp.open('GET', 'task.ini', false);
-        xmlhttp.send(null);
-        if (xmlhttp.status == 200) {
-            response = xmlhttp.responseText;
-        }
-    })();
-    var splitted = response.split("\n", 1000);
-    for (var i = 0; i < splitted.length; i++) {
-        var spl = splitted[i].split("=", 1000);
-        if (spl[0] == "TaskPicture") {
-            if (spl.length == 2) {
-                str = spl[1];
-                console.log(str)
-            }
-            if (spl[0] == "TaskPicture") {
-                str = spl[1];
-            }
-        }
-    }
-
     var width = 7;
     var height = 5;
 
@@ -58,29 +19,6 @@ var str = '';
     var context3 = canvas2.getContext("2d");
     var context4 = canvas2.getContext("2d");
 
-
-function drawBoard(context) {
-    for (var i = 0; i <= bw; i += 50) {
-        context.moveTo(0.5 + i + padding, padding);
-        context.lineTo(0.5 + i + padding, bh + padding);
-    }
-    for (var i = 0; i <= bh; i += 50) {
-        context.moveTo(padding, 0.5 + i + padding);
-        context.lineTo(bw + padding, 0.5 + i + padding);
-    }
-    context.strokeStyle = "#CBDBE1";
-    context.stroke();
-}
-
-function par(s) {
-    for (var i = 0; i < s.length; i++) {
-        if (isNaN(s[i + 1]) == false) {
-            for (j = 0; j < s[i + 1]; j++) {
-                move(s[i]);
-            }
-        }
-    }
-}
 
     function drawBoard(context) {
         for (var i = 0; i <= bw; i += 50) {
