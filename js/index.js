@@ -69,9 +69,9 @@ function drawBoard(context) {
 
 function par(s) {
     for (var i = 0; i < s.length; i++) {
-        if (isNaN(s[i]) == false) {
-            for (j = 0; j < s[i]; j++) {
-                move(s[i + 1]);
+        if (isNaN(s[i + 1]) == false) {
+            for (j = 0; j < s[i + 1]; j++) {
+                move(s[i]);
             }
 
             i += 1;
