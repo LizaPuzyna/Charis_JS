@@ -28,8 +28,16 @@ var response = undefined;
 var splitted = response.split("\n", 1000);
 for (var i = 0; i < splitted.length; i++) {
     var spl = splitted[i].split("=", 1000);
+<<<<<<< HEAD
+    if (spl[0]=="TaskPicture"){
+        if (spl.length == 2){
+            s = spl[1];
+            console.log(s)
+        }
+=======
     if (spl[0] == "TaskPicture") {
         str = spl[1];
+>>>>>>> 66b5c890bdc27427796eae7d3ecdebe1c3b8a7f7
     }
 }
 
