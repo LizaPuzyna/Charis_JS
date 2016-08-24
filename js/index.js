@@ -1,4 +1,4 @@
-var s = '';
+var str = '';
 
 function getXmlHttp() {
     var xmlhttp;
@@ -26,33 +26,42 @@ var response = undefined;
     }
 })();
 var splitted = response.split("\n", 1000);
-for(var i = 0; i < splitted.length; i++){
+for (var i = 0; i < splitted.length; i++) {
     var spl = splitted[i].split("=", 1000);
-    if (spl[0]=="TaskPicture"){
-        s = spl[1];
+    if (spl[0] == "TaskPicture") {
+        str = spl[1];
     }
 }
 
-var bw = 200;
-var bh = 200;
+var width = 7;
+var height = 5;
+
+var bw = width * 50;
+var bh = height * 50;
 var padding = 4;
+var j = 0;
+
 //var cw = bw + (padding*2) + 1;
 //var ch = bh + (padding*2) + 1;
 
-var a = padding;
-var b = padding;
+var x = padding;
+var y = padding;
 
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
+var canvas1 = document.getElementById("canvas1");
+var context1 = canvas1.getContext("2d");
+var context2 = canvas1.getContext("2d");
+var canvas2 = document.getElementById("canvas2");
+var context3 = canvas2.getContext("2d");
+var context4 = canvas2.getContext("2d");
 
-function drawBoard() {
-    for (var x = 0; x <= bw; x += 50) {
-        context.moveTo(0.5 + x + padding, padding);
-        context.lineTo(0.5 + x + padding, bh + padding);
+function drawBoard(context) {
+    for (var i = 0; i <= bw; i += 50) {
+        context.moveTo(0.5 + i + padding, padding);
+        context.lineTo(0.5 + i + padding, bh + padding);
     }
-    for (var x = 0; x <= bh; x += 50) {
-        context.moveTo(padding, 0.5 + x + padding);
-        context.lineTo(bw + padding, 0.5 + x + padding);
+    for (var i = 0; i <= bh; i += 50) {
+        context.moveTo(padding, 0.5 + i + padding);
+        context.lineTo(bw + padding, 0.5 + i + padding);
     }
     context.strokeStyle = "#CBDBE1";
     context.stroke();
@@ -60,29 +69,48 @@ function drawBoard() {
 
 function par(s) {
     for (var i = 0; i < s.length; i++) {
-        move(s[i]);
+        if (isNaN(s[i]) == false) {
+            for (j = 0; j < s[i]; j++) {
+                move(s[i + 1]);
+            }
+
+            i += 1;
+        }
+        else {
+            move(s[i]);
+        }
+
     }
+
 }
 
 function move(str) {
-    context.moveTo(a, b);
+    context2.moveTo(x, y);
+    context4.moveTo(x, y);
     if (str == "R") {
-        a += 50;
+        x += 50;
     }
     else if (str == "D") {
-        b += 50;
+        y += 50;
     }
     else if (str == "L") {
-        a -= 50;
+        x -= 50;
     }
     else if (str == "U") {
-        b -= 50;
+        y -= 50;
     }
-    context.lineTo(a, b);
-    context.stroke();
+    context2.lineTo(x, y);
+    context2.stroke();
+    context4.lineTo(x, y);
+    context4.stroke();
 
 }
 
-drawBoard();
+drawBoard(context1);
+drawBoard(context3);
 
-par(s);
+par(str);
+
+
+
+
