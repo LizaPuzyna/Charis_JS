@@ -21,7 +21,6 @@ function getFile(name) {
     xmlhttp.send(null);
     if (xmlhttp.status == 200) {
         response = xmlhttp.responseText;
-        //alert(response);
         return response;
     }
     return "";
@@ -30,27 +29,63 @@ function getFile(name) {
 var myMap = null;
 
 function loadParams(dataString) {
-    var splitted = dataString.split("\n");
-    console.log(splitted);
+    var splitted = dataString.trim().split("\n");
 
     myMap = new Map();
 
     for(var i = 0; i < splitted.length; i++){
         var splitted2 = splitted[i].split("=");
         if (splitted2.length == 2){
-            myMap.set(splitted2[0], splitted2[1]);
+            myMap.set(splitted2[0], splitted2[1].trim());
         }
     }
 
+    var attrDir = getParam("SolutionPictureAttributes").split(",");
+    for(var i = 0; i < attrDir.length; i++){
+        if (attrDir[i] == "V"){
+            myMap.set("PresetUp","true");
+            myMap.set("PresetDown","true");
+        }
+        else if (attrDir[i] == "H"){
+            myMap.set("PresetRight","true");
+            myMap.set("PresetLeft","true");
+        }
+        else if (attrDir[i] == "Diag"){
+            myMap.set("PresetRightUp","true");
+            myMap.set("PresetRightDown","true");
+            myMap.set("PresetLeftUp","true");
+            myMap.set("PresetLeftDown","true");
+        }
+        else if (attrDir[i] == "RD"){
+            myMap.set("PresentRight", "true");
+            myMap.set("PresentDown", "true");
+        }
+        else if (attrDir[i] == "Circle"){
+            myMap.set("PresentCircle", "true");
+        }
+        else if (attrDir[i] == "Flag"){
+            myMap.set("PresentFlag", "true");
+        }
+        else if (attrDir[i] == "J"){
+            myMap.set("PresentJumpRight", "true");
+        }
+        else if (attrDir[i] == "JD"){
+            myMap.set("PresentJumpDown", "true");
+        }
+    }
+}
+
+function loadParamFpomFile(fileName) {
+    loadParams(getFile(fileName));
 }
 
 function getParam(propName){
-
     if(myMap==null)
     {
-        loadParams(getFile("task.ini"))
+        loadParamFpomFile("task.ini");
     }
-
     return myMap.get(propName);
-
 }
+
+
+

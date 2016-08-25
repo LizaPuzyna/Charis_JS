@@ -1,3 +1,4 @@
+loadParamFpomFile("tasks\\1-2кл, 1 урок, Исполнитель по шаблону\\1001\\task.ini");
 var str = getParam("TaskPicture");
 
 var width = 7;
@@ -8,9 +9,6 @@ var bw = width * n;
 var bh = height * n;
 var padding = 4;
 var j = 0;
-
-//var cw = bw + (padding*2) + 1;
-//var ch = bh + (padding*2) + 1;
 
 var x = padding;
 var y = padding;
@@ -37,21 +35,16 @@ function drawBoard(context) {
 
 function par(s) {
     for (var i = 0; i < s.length; i++) {
-        console.log(s[i]);
         if ((isNaN(s[i + 1]) == false) && (i != s.length - 2)) {
-
             for (j = 0; j < s[i + 1]; j++) {
                 move(s[i]);
             }
-
             i += 1;
         }
         else {
             move(s[i]);
         }
-
     }
-
 }
 
 function move(str) {
@@ -73,7 +66,6 @@ function move(str) {
     context2.stroke();
     context4.lineTo(x, y);
     context4.stroke();
-
 }
 
 drawBoard(context1);

@@ -1,0 +1,58 @@
+[Task]
+# Краткое название
+TaskName=Нотку по рисунку
+# Тэги для причисления задач к разным категориям (не обязательно)
+Tags=Программирование до 6 лет,Алгоритмика,Сложность 1,Возраст 6
+# Развернутый коментарий по задаче. (не обязательно)
+Comment=Задача на программирование по рисунку с Переходом Вправо
+# Показывать ли предварительно теорию прежде чем решать задачу (если есть контент)?
+ShowTheory=true
+
+# Раздел описания параметров 
+[View]
+# Тип элемента на панели задачи: Draw, Schema
+TaskPane=Draw
+
+# Тип элемента на панели решения: Draw, Schema
+SolutionPane=Schema
+
+
+# Картинка для режима Draw
+TaskPicture=J(RD)D(LU)UDDDDLUR
+
+# Схема для режима Schema
+#TaskSchema=J(RD)D(LU)UDDDDLUR
+
+# Размеры поля
+BoardWidth=4
+BoardHeight=5
+
+# Размеры поля для SolutionPane=Schema
+SchemaBoardWidth=6
+SchemaBoardHeight=2
+
+Helper=true
+
+
+# Атрибуты как рисовать
+#SolutionPictureAttributes=H,V,RD,Diag,Circle,Flag
+SolutionPictureAttributes=H,V,RD,Diag,J
+# Прорисовывать ли серым на подложку.
+SolutionPreDraw=false
+# Для WormDrawer строка в виде схемы. 
+Answer=J(RD)D(LU)UDDDDLUR
+# Прорисовывать ли серым на подложку.
+SolutionPreDraw=false
+
+
+OneSpace=false
+
+# При отрисовке на окне справа, на картинке слева закрывать 
+# уже нарисованное красным цветом. (то есть рисование слева и справа)
+#Implementation=true
+
+# Раздел описания контента
+[Content]
+# Относительная ссылка на видео описание.
+#todo сделать видео для первого задания
+#VideoFile=video.avi
